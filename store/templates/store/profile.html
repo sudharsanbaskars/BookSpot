@@ -1,0 +1,88 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">   
+            <div class="col-lg-6">
+                <div class="box-element">
+                    <h3>User Profile</h3>
+                    <hr>
+                    <h5>User Name : <h3>{{shippingAddress.customer}}</h3></h5>
+                    <hr>
+                    <h5>Address : <h3>{{shippingAddress.address}}</h3></h5>
+                    <hr>
+                    <h5>City : <h3>{{shippingAddress.city}}</h3></h5>
+                    <hr>
+                    <h5>State : <h3>{{shippingAddress.state}}</h3></h5>
+                    <hr>
+                    <h5>Zipcode : <h3>{{shippingAddress.zipcode}}</h3></h5>
+
+                     <a href="{% url 'update_profile' %}" style="text-decoration: none;"><button class="btn btn-success btn-block">Update Profile</button></a>
+                    
+                </div>
+            </div>
+
+        <div class="col-lg-6">
+                <div class="box-element">
+                    <h3>Profile Picture:</h3>
+                    <img class="thumbnail" src="{{ profilePic.imageURL }}" alt="..." style="height: 350px;">
+                    <hr>
+                        <form id="form" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <div id="user-info">
+                                <label for="image">Change Profile:</label>
+                                <input class="form-control" type="file" name="image" id="image">
+                                <br>
+                                <input id="profile-button" class="form-control" type="submit" value="Submit">
+                            </div>
+                        </form>
+
+                    </div>
+                
+        </div>   
+
+    </div> 
+    
+ <!-- <script>
+    document.getElementById('profile-button').addEventListener('submit', 
+    function(event){
+    location.reload();
+    alert('reloaded');
+    });
+</script> -->
+
+  
+{% endblock content %}
+
+
+
+    <!-- <script>
+        // your function
+        var my_func = function(event) {
+            event.preventDefault();
+        };
+
+        // your form
+        var form = document.getElementById("form");
+
+        // attach event listener
+        form.addEventListener("submit", my_func, true);
+    </script> -->
+
+      <!-- <script>
+        
+        function update() {
+        document.getElementById('profile-button').classList.add("hidden");
+        document.getElementById('form-wrapper').classList.remove("hidden");
+        document.getElementById('button-clicked').classList.add("hidden");
+        document.getElementById('close-clicked').classList.remove("hidden");
+        }
+
+        function closeUpdate() {
+        document.getElementById('profile-button').classList.remove("hidden");
+        document.getElementById('form-wrapper').classList.add("hidden");
+        document.getElementById('button-clicked').classList.remove("hidden");
+        document.getElementById('close-clicked').classList.add("hidden");
+        }
+    </script> -->
